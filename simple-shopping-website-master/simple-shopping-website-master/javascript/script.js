@@ -176,20 +176,4 @@ function printCart(){
 
 function validateForm(){
 	
-	var val = document.forms["myform"]["name"].value;
-	if (val == "") {
-		alert("Name must be filled out");
-		return false;
-	}
-	val = document.forms["myform"]["mobile_number"].value;
-	console.log('mobile '+ val);
-	if (val == "") {
-		alert("Mobile Number must be filled out");
-		return false;
-	}
-	if(val.length != 10){
-		alert('Mobile no must be of length 10');
-		return false;
-	}
-
 }
