@@ -6,6 +6,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 	<link rel="shortcut icon"  href="images/site-icon.jpg">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 
 	<title> ABC Shopping Website | Mobiles </title>
 </head>
@@ -80,14 +81,27 @@
 		</div>
 
 		<div class="item"> 
-			<div> <img class="item_image"  src =  > </div>
-			<div class="item_name" name="mobile1"> 
+			<div class="item_image" > <img id="myimage" value="mobile1" src="">
+			
+			</div>
+			
+			<div class="item_name"> 
 				<script type="text/javascript">
-					document.getElementByName("mobile1").productType;
+					document.write(mobile1.productName );
 				</script> 
 			</div>
-			<div class="item_original_price">  </div>
-			<div class="item_discount_price"> &#x20b9; 11990 </div>
+			<div class="item_original_price">
+				<s> &#x20b9;
+				<script type="text/javascript">
+					document.write( mobile1.originalPrice );
+				</script>
+				</s>  
+			</div>
+			<div class="item_discount_price"> &#x20b9;
+				<script type="text/javascript">
+					document.write( mobile1.discountedPrice );
+				</script>
+			</div>
 		</div>
 
 		

@@ -19,5 +19,6 @@ function openHome(){
 	// function to open homepage whenever clicked on 'myHeader'
 	window.location = 'home.html';
 }
-document.write(mobile1.productName);
-document.getElementById("demo").innerHTML = mobile1.imagePath;
+
+// var varname = document.getElementById("myimage").value;
+document.getElementById("myimage").src = mobile1.imagePath;
