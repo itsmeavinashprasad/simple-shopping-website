@@ -8,36 +8,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 
-	<title> ABC Shopping Website | Mobiles </title>
+	<title> ABC Shopping Website | Checkout </title>
 </head>
-<body onload=initCart()+printCart()>
+<body >
 
 <div class="myHeader1" id="page-header" onclick="openHome();">
 	 ABC Shopping Online | Checkout
 </div>
 
 <div class="checkout_body">
-	<div class="checkout_body_header">
-		Delivery Address
-	</div>
 	<div>
-		<form name="myform" onsubmit="return validateForm()" method="post">
+		<div class="checkout_body_header">
+			Delivery Address
+		</div>
+		<form name="myform" method="post">
 			<input type="text" name="name" placeholder="Your Name" class="name_class" maxlength="30" required>
-			<input type="text" name="mobile_number" placeholder="Mobile Number (10 digits)" class="name_class" pattern=[0-9]{10} title="10 Digit Mobile Number" maxlength="10" required>
-			<input type="text" name="pincode" placeholder="Pincode" class="name_class" maxlength="6" pattern=[0-9]{6} title="6 digits PIN code" required>
-			<input type="email" name="email" placeholder="Email id" class="name_class" maxlength="25" required>
+			<input type="tel" name="mobile_number" placeholder="Mobile Number (10 digits)" class="name_class" pattern="[0-9]{10}" title="10 Digit Mobile Number" maxlength="10" required>
+			<input type="text" name="pincode" placeholder="Pincode" class="name_class" maxlength="6" pattern="[0-9]{6}" title="6 digits PIN code" required>
+			<input type="email" name="email" placeholder="Email id" class="name_class" maxlength="40" required>
+			<input type="text" name="address" placeholder="Address" class="name_class" maxlength="500" required>
+
+		<div class="checkout_body_header">
+			Payment Options
+		</div>
+
+			<input type="radio" name="mode" value="credit_card" class="name_radio_button" checked > Credit Card <br>
+			<input type="text" name="card_no" placeholder="Enter Card Number" class="name_class" maxlength="16" pattern="[0-9]{16}" title="Enter 16 Digit Card Number" required>
+			<input type="date" name="exp_date" placeholder="Expiry Date" class="name_class" style="width: 400px;" required>
+			<input type="password" name="cvv" placeholder="CVV" class="name_class" maxlength="3" style="width: 100px;" required>
+			<br>
+			<input type="radio" name="mode" value="net_banking" class="name_radio_button" disabled> Net Banking <br>
+			<input type="radio" name="mode" value="cod" class="name_radio_button" disabled> Cash On Delivery <br> 
 			<input type="submit" value="Submit" class="name_class" onclick="validateForm()">
 		</form>
-			
 	</div>
 	
 </div>
-<div class="checkout_body">
-	<div class="checkout_body_header">
-		Payment Options
-	</div>
-	
-</div>
+
 
 </body>
 </html>

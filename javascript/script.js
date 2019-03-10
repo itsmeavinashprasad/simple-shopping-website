@@ -12,9 +12,6 @@ function Product(id, name, type, originalPrice, discountedPrice, imagePath){
 	this.discountedPrice = discountedPrice;
 	this.imagePath = imagePath;
 	this.isInCart = false;
-	this.addItemToCart = function() {
-		this.isInCart = true;
-	}
 }
 
 // mobiles
@@ -39,10 +36,30 @@ var dress8 = new Product(15, "Dress 8", "Dress", 700, 700, "images/dresses/dress
 var dress9 = new Product(16, "Dress 9", "Dress", 500, 500, "images/dresses/dress9.jpg");
 var dress10 = new Product(17, "Dress 10", "Dress", 750, 750, "images/dresses/dress10.jpg");
 
+// bags
+var bag1 = new Product(26, "Bag 1", "Bag", 4000, 4000, "images/bags/bag1.jpg");
+var bag2 = new Product(27, "Bag 2", "Bag", 4000, 4000, "images/bags/bag2.jpg");
+var bag3 = new Product(28, "Bag 3", "Bag", 4000, 4000, "images/bags/bag3.jpg");
+var bag4 = new Product(29, "Bag 4", "Bag", 4000, 4000, "images/bags/bag4.jpg");
+var bag5 = new Product(30, "Bag 5", "Bag", 4000, 4000, "images/bags/bag5.jpg");
+var bag6 = new Product(31, "Bag 6", "Bag", 4000, 4000, "images/bags/bag6.jpg");
+var bag7 = new Product(32, "Bag 7", "Bag", 4000, 4000, "images/bags/bag7.jpg");
+var bag8 = new Product(33, "Bag 8", "Bag", 4000, 4000, "images/bags/bag8.jpg");
+
+// shoes
+var shoe1 = new Product(19, "Shoe 1", "Shoe", 4000, 4000, "images/shoes/shoe1.jpg");
+var shoe2 = new Product(20, "Shoe 2", "Shoe", 4000, 4000, "images/shoes/shoe2.jpg");
+var shoe3 = new Product(21, "Shoe 3", "Shoe", 4000, 4000, "images/shoes/shoe3.jpg");
+var shoe4 = new Product(22, "Shoe 4", "Shoe", 4000, 4000, "images/shoes/shoe4.jpg");
+var shoe5 = new Product(23, "Shoe 5", "Shoe", 4000, 4000, "images/shoes/shoe5.jpg");
+var shoe6 = new Product(24, "Shoe 6", "Shoe", 4000, 4000, "images/shoes/shoe6.jpg");
+var shoe7 = new Product(25, "Shoe 7", "Shoe", 4000, 4000, "images/shoes/shoe7.jpg");
+
 // products
 allProducts = 	[
 					mobile1, mobile2, mobile3, mobile4, mobile5, mobile6, mobile7,
-					dress1, dress2, dress3, dress4, dress5, dress6, dress7, dress8, dress9, dress10
+					dress1, dress2, dress3, dress4, dress5, dress6, dress7, dress8, dress9, dress10,
+					bag1, bag2, bag3, bag4, bag5, bag6, bag7, bag8
 				];
 
 function openHome(){
@@ -51,26 +68,29 @@ function openHome(){
 }
 
 function addToCart(product){
-	for(var i=0; i < allProducts.length; i++){
-		if(product.productName === allProducts[i].productName){
-			if(allProducts[i].isInCart === true){
-				console.log(allProducts[i].productName + ' : already in cart');
-			}
-			else{
-				allProducts[i].addItemToCart() ;
-				console.log(allProducts[i].productName + ' : add to cart');
-				noOfProductsInCart += 1;
-				cartItems.push(allProducts[i].productId);
-				updateCart();
-			}
+
+	for(i=0; i<cartItems.length; i++){
+		if(product.productId == cartItems[i]){
+			// true if item is already present in the cart
+			console.log(allProducts[i].productName + ' : already in cart');
+			return ;
 		}
 	}
-	console.log('No of products in the cart: ' + noOfProductsInCart);	
+	// for(i=0; i < allProducts.length; i++){
+	// 	for(j=0; j<cartItems.length; j++){
+	// 		if(allProducts[i].productId == cartItems[j]){
+	// 			
+	// 		}
+	// 	}
+	// }
 	
+	console.log(product.productName + ' : add to cart');
+	noOfProductsInCart += 1;
+	cartItems.push(product.productId);
+	updateCart();
+	return;
 }
 
-// var varname = document.getElementById("myimage").value;
-// document.getElementById("myimage").src = mobile1.imagePath;
 function removeFromCart() {
 	var id = cartItems[j];
 	console.log('removeFromCart() is called for item id ' + id);
@@ -90,6 +110,8 @@ function updateCart(){
 	console.log('updateCart() is called');
 	sessionStorage.setItem("itemCount", noOfProductsInCart);
 	sessionStorage.setItem("itemsInCart", cartItems) ;
+	console.log('No of products in the cart: ' + noOfProductsInCart);	
+	console.log('Products in the cart: ' + cartItems);
 }
 function initCart(){
 	console.log('initCart called');
@@ -100,7 +122,8 @@ function initCart(){
 	}
 	var temp = sessionStorage.getItem("itemsInCart");
 	if(temp != null){
-		for(var k=0; k<temp.length; k+=2){
+		temp = temp.split(",");
+		for(var k=0; k<temp.length; k++){
 			cartItems.push(temp[k]);
 		}
 	}
@@ -200,5 +223,43 @@ function validateForm(){
 		return false;
 	}
 
-	//
+	//validate username in email
+	val = document.forms["myform"]["email"].value;
+	let username = val.substring(0, val.indexOf("@"));
+	if(username.length <5 ){
+		alert('Username is less that length 5');
+		return false;
+	}
+
+	// validate card no
+	val = document.forms["myform"]["card_no"].value;
+	if(val.length != 16){
+		alert("Card No is less than 16 digits");
+		return false;
+	}
+
+	// date validation
+	val = document.forms["myform"]["exp_date"].value;
+	let date = val.split("-") ;
+	let entered = parseInt(date[0]+date[1]+date[2]);
+	let today = new Date();
+	let current = today.getFullYear().toString() ;
+	let mm = today.getMonth()+1;
+	if(mm < 10 )
+		current += '0' + mm;
+	else
+		current += mm.toString();
+	
+	if(today.getDate() < 10 )
+		current += '0' + today.getDate();
+	else
+		current += today.getDate().toString();
+
+	current = parseInt(current);
+	if( current > entered ){
+		alert('Sorry! Your Card has expired.');
+		return false;
+	}
+
 }
+

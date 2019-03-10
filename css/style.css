@@ -135,10 +135,12 @@ table, tr, td{
 	background-color: lightgray;
 	border-radius: 8px;
 	padding: 20px;
-	margin:5px;
+	margin:10px 130px 0 130px;
 	border-radius: 5px;
 	background-color: #f2f2f2;
 	padding: 20px;
+	border-color: #F1EEEE;
+	border-style:solid;
 }
 .checkout_body_header {
 	display: block;
@@ -147,6 +149,7 @@ table, tr, td{
 	width: 200px;
 	color: white;
 	margin-left: 50px;
+	margin-top: 20px;
 	white-space: nowrap;
 	border-radius: 5px;
 	font-size: 1.3em;
@@ -154,12 +157,18 @@ table, tr, td{
 }
 
 .name_class {
-	position:relative;
 	width: 600px;
 	margin-left: 50px; 
 	margin-top: 20px;
 	padding: 12px 20px;
-	box-sizing: border-box;
+	border-radius: 5px;
+}
 
+.name_radio_button {
+	margin-left: 50px; 
+	margin-top: 20px;
+	padding: 12px 20px;
+	font-family: "Sans Serif";
+	font-size: 2em;
 }
 
