@@ -176,11 +176,13 @@ function printCart(){
 
 function validateForm(){
 	
+	// validate name
 	var val = document.forms["myform"]["name"].value;
 	if (val == "") {
 		alert("Name must be filled out");
 		return false;
 	}
+	// validate mobile number
 	val = document.forms["myform"]["mobile_number"].value;
 	console.log('mobile '+ val);
 	if (val == "") {
@@ -191,5 +193,12 @@ function validateForm(){
 		alert('Mobile no must be of length 10');
 		return false;
 	}
+	// validate pincode
+	val = document.forms["myform"]["pincode"].value;
+	if(val.length != 6){
+		alert('PIN Code must be of length 6');
+		return false;
+	}
 
+	//
 }
